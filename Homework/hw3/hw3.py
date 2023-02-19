@@ -63,5 +63,5 @@ if __name__ == "__main__":
         print(str(n_value[i]) + a +'             ' + str(f'{measure_min_time(find_pairs_naive,(list*(int(n_value[i]/10)), 6)):.4f}')+'             '+f'{measure_min_time(find_pairs_optimized,(list*int((n_value[i]/10)), 6)):.4f}')
     print("--------------------------------------------------")
 
-
+'this is a test to see if github will autoupdate'
 
