@@ -92,12 +92,54 @@ class DoublyLinkedList:
         
     # TODO: Add a docstring and implement
     def __contains__(self, item):
-        raise NotImplementedError
+        '''tests to see if in in the linkedlist'''
+        return item in self._nodes
+
 
     # TODO: Add a docstring and implement
     def neighbors(self, item):
-        raise NotImplementedError
+        'returns item before and after the node'
+        if item not in self._nodes:
+            raise RuntimeError('Item is not in DLL!')
+        
+        #store node in variable
+        new_node = self._nodes[item]
+        
+        #edge case for tail
+        if item == self._head.item: return(self._tail._prev.item, None)
+        
+        #general case
+        else: return(new_node._prev.item, new_node._next.item)
+        
 
     # TODO: Add a docstring and implement
     def remove_node(self, item):
-        raise NotImplementedError
+        'remove node that has item in linked list'
+        # raise RuntimeError if item not in linked list
+
+        if item not in self:
+            raise RuntimeError('Item is not in DLL!')
+
+        # store node in variable
+        new_node = self._nodes[item]
+
+        # edge case that removes head
+        if item == self._head.item:
+            self._head = new_node._next
+            new_node._prev = None
+
+        # edge case removes tail
+        elif item == self._tail.item:
+            self._tail = new_node._prev
+            new_node._next = None
+
+        #general case
+        else:
+            new_node._prev._next = new_node._next
+            new_node._next._prev = new_node._prev
+   
+        #deletes nodes
+        self._nodes.pop(new_node.item)
+        
+        # decrease the length                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+        self._len -= 1

@@ -16,7 +16,36 @@ def greedy_fewest_coins(amt_in_cents, coin_value_list = [1,5,10,25]):
 
     return num_coins
 
+def recr_fewest_coins(amt, coins = {1,5,10,25}):
+    #sort and reverse coin list
+    # iterate through coin list, biggest value first
+        #use as many largest coins as possible 
+        #deduct that value form the amount remaining
+    
+    
+    
+    if amt in coins:
+        return 1
+    
+    #initialzie guess at optimum solution
+    min_coins = amt
+    
+    #go through every valud path
+    for coin in coins:
+        if coin <= amt:
+            path_optimum = 1+ recr_fewest_coins(amt-coin, coins)
+            #              1 + fc(62) #1
+            #              1 + fc(58) #5
+            #              1+ fc(53)  #10 
+            #              1+  fc(42) #21
+            
+            if path_optimum < min_coins:
+                min_coins = path_optimum
+   
+   
+    return min_coins
 
+        
 
 
 print("Fewest coins to make $0.63 using only:")
