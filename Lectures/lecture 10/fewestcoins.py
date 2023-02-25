@@ -24,15 +24,19 @@ def recr_fewest_coins(amt, coins = {1,5,10,25}):
     
     
     
-    if amt in coins:
-        return 1
+    if amt in coins: return 1
     
     #initialzie guess at optimum solution
     min_coins = amt
     
     #go through every valud path
     for coin in coins:
+        #TODO: check if you've already solved this problem 
+        if 
+        
         if coin <= amt:
+            
+        
             path_optimum = 1+ recr_fewest_coins(amt-coin, coins)
             #              1 + fc(62) #1
             #              1 + fc(58) #5

@@ -15,7 +15,7 @@ next_move = set()
 moves = (index + board[index], index - board[index])
     
 for i in moves:
-    
+    i %= board[-1]
     if i not in visted:
         next_move.add(i)
         
