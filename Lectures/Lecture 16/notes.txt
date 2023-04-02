@@ -1,0 +1,17 @@
+Amortized Analysisis from removing from a a list
+
+[<---------n--------->] cost to remove n items 
+    for this sort of analysis need costraint:
+        constraint: 1/2 len(L) 
+
+    keep removing item until n/2 
+
+[<----n/2---->]
+cost to remove n/2 : N/2 pops +n/2 writes = n
+
+[<---n/4--->] N/4 pops +n/4writes = n/2
+
+
+[<-n/8->] N/8 pops +n/8 writes = n/4
+
+will keep going until we have an empty list 
