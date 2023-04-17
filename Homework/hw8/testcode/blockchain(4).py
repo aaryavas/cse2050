@@ -1,35 +1,41 @@
-from hashmap import HashMap
-class Transaction():
-    
+class Transaction():#contains single transation, sending transaction, recieving user, and amount being transferred 
     def __init__(self, from_user, to_user, amount):
         self.from_user = from_user
         self.to_user = to_user
         self.amount = amount
-
+    
 class Block():
-    def __init__(self, transactions, previous_block_hash=None):
+    def __init__(self, transactions=None):
         self.transactions = transactions
-        self.previous_block_hash = previous_block_hash
+        
+    def previous_block_hash(self, key):#contains hash of previous block in the chain might be similar to get
+        for e in self.transactions:
+            if e.key == key:
+                return e.value
+        raise KeyError
 
+    def add_transaction(self, key, value):#similar to put
+        for e in self.transactions:
+            if e.key == key:
+                e.value =value
+                return
+        self.transactions.append#(recursive)
+        
+        
 class Ledger():
     def __init__(self):
-        self._hashmap = HashMap()
+        pass
     
-    '''checks if hashmap has funds '''
-    def has_funds(self, user, amount):
-         if user not in self._hashmap:
-             return False
-         balance = self._hashmap.get(user)
-         return balance >= amount
-    '''deposits the husky coin to a hashmap'''
+    # def has_funds(self, user, amount):
+    #     if user not in self._hashmap:
+    #         return False
+    #     balance = self._hashmap.get(user)
+    #     return balance >= amount
+    def has_funds(self, user, amount):pass
+        
     def deposit(self, user, amount):
-        if user not in self._hashmap:
-            self._hashmap.put(user, amount)
-        else:
-            if self._hashmap.get(user) + amount >= 0:
-                self._hashmap.put(user, self._hashmap.get(user) + amount)
-            else:
-                raise ValueError("Insufficient funds.")
+        pass
+
 class Blockchain():
     '''Contains the chain of blocks.'''
 
@@ -70,38 +76,4 @@ class Blockchain():
         block = Block([trans])
         self.add_block(block)
 
-    
-    '''validates block'''
-    def validate_block(self, block):
-        if not block.transactions:
-            return False
-        if block.previous_block_hash != self.get_latest_block_hash():
-            return False
-        return True
-    
-    '''validates chain'''
-    def validate_chain(self):
-        if len(self._blockchain) == 0:
-            return True
-        for i in range(1, len(self._blockchain)):
-            if not self.validate_block(self._blockchain[i]):
-                return False
-        return True
-    '''will get the last block in the hash'''
-    def get_latest_block_hash(self):
-        if len(self._blockchain) == 0:
-            return None
-        return self._blockchain[-1].previous_block_hash
-    
-    '''will add a block to the hash'''
-    def add_block(self, block):
-        if self.validate_block(block):
-            self._blockchain.append(block)
-            for trans in block.transactions:
-                self._bc_ledger.deposit(trans.to_user, trans.amount)
-                self._bc_ledger.deposit(trans.from_user, -trans.amount)
-            return True
-        else:
-            return False
-
-
+    # TODO - add the rest of the code for the class here

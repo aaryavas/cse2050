@@ -1,0 +1,12 @@
+priority Queue
+    a very useful ADT(abstract data type)
+    all you really efine is an interface
+    input and output
+    input: put(item,priority)
+    output: remove.min()
+    peeking = remove_min similar 
+    a Queue that favors certain inputs as priority
+    heap - data structure that is a tree 
+        are binary trees
+        not binary search trees
+        must be complete 

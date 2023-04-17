@@ -1,0 +1,4 @@
+today we will work on how to make BST betters
+
+BST-remove
+root.remove()

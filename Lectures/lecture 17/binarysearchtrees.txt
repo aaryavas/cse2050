@@ -1,0 +1,26 @@
+Binary search Trees
+
+    vocab 
+        root - will be top note
+        leaf - any note that doesn't have any children 
+        parent - note above current note //1-away relationships
+        child - note below current note //1-away relationships
+
+        ancestors //n-away relationships
+        descendants //n-away relationships
+
+        distance means # of edges
+        Binary trees will traverse from top to bottom 
+
+        depth - distance to root
+        height - distance to the deepest leaf descendant do not count the notes themselves but the pathways to the notes
+        weight - # of descendants + 1 
+    
+
+    Binary search trees
+        Binary
+            each node has at most 2 children
+        search
+            node.key is greater than all keys in node
+            node.key < all keys in node.right
+        trees
